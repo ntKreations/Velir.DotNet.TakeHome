@@ -1,31 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using TakeHome.Models;
 
 namespace TakeHome.Controllers
 {
     public class FeedbackController : Controller
     {
-        // GET: Feedback
-        
+        /// <summary>Get form view</summary>
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
+        /// <summary>Form submission</summary>
+        [HttpPost]
         [ValidateInput(true)]
-        public ActionResult Feedback(FeedbackForm form)
+        [ValidateAntiForgeryToken]
+        public ActionResult Submit(FeedbackViewModel form)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) // check form
             {
+                // TODO: add persistence or additional action here
                 return View("ThankYou", form);
             }
-            else
-                ViewBag.Result = "Invalid Entries, Kindly Recheck.";
-            return View();
+
+            ViewBag.Message = "Invalid entries, kindly recheck.";
+            return View("Index"); // return form view if not valid
         }
 
     }

@@ -17,8 +17,17 @@ Requirements:
 
 The following bugs have been reported with this feature
 
-The error page is not showing.
-Our Contact page is missing from the main header.
-The new Feedback Form page will not load
-Submitting the form does not work.
-The thank you page should display the form responses you submitted but does not.
+The error page is not showing. - turn on custom error
+Our Contact page is missing from the main header. - add link
+The new Feedback Form page will not load - fix various issue
+Submitting the form does not work. - fixed routing
+The thank you page should display the form responses you submitted but does not. - fixed model
+
+
+Notes:
+- 25 characters limit for email is really short
+- Added token to extra security to prevent XSS
+- Can add client side validation
+- Use display templates for the "editor-label"
+- Casing on messages
+- Leverage bootstrap styling for form and display
